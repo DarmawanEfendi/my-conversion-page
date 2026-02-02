@@ -3,83 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>My JS Page</title>
+    <title>Home Page</title>
   </head>
   <body>
-    <h1>Hello GitHub Pages</h1>
-    <p><strong>Current URL:</strong> <code id="currentUrl"></code></p>
-
-  <div id="output"></div>
-
-  <script>
-    function collectAllParams(searchParams) {
-      // key -> array of values (handles repeated params like ?b=1&b=2)
-      const map = new Map();
-      for (const [key, value] of searchParams.entries()) {
-        if (!map.has(key)) map.set(key, []);
-        map.get(key).push(value);
-      }
-      return map;
-    }
-
-    function renderParams() {
-      const url = new URL(window.location.href);
-      document.getElementById("currentUrl").textContent = url.href;
-
-      const paramsMap = collectAllParams(url.searchParams);
-      const output = document.getElementById("output");
-      output.innerHTML = "";
-
-      if (paramsMap.size === 0) {
-        const p = document.createElement("p");
-        p.textContent = "No query parameters found (nothing after ? in the URL).";
-        output.appendChild(p);
-        return;
-      }
-
-      const table = document.createElement("table");
-      const thead = document.createElement("thead");
-      thead.innerHTML = "<tr><th>Key</th><th>Value(s)</th><th>Count</th></tr>";
-      table.appendChild(thead);
-
-      const tbody = document.createElement("tbody");
-      for (const [key, values] of paramsMap.entries()) {
-        const tr = document.createElement("tr");
-
-        const tdKey = document.createElement("td");
-        tdKey.textContent = key;
-
-        const tdVals = document.createElement("td");
-        // show each value on its own line
-        tdVals.textContent = values.join("\n");
-        tdVals.style.whiteSpace = "pre-wrap";
-
-        const tdCount = document.createElement("td");
-        tdCount.textContent = String(values.length);
-
-        tr.appendChild(tdKey);
-        tr.appendChild(tdVals);
-        tr.appendChild(tdCount);
-        tbody.appendChild(tr);
-      }
-      table.appendChild(tbody);
-      output.appendChild(table);
-    }
-
-    // Render on load
-    renderParams();
-
-    // Optional: re-render if the URL changes without full reload
-    window.addEventListener("popstate", renderParams);
-    window.addEventListener("hashchange", renderParams);
-  </script>
-          <!-- Conversion Tracking Code -->
-      <script>
-        var script = document.createElement('script');
-        script.defer = true;
-        script.src = "https://static.jp.langai-team.qa.zeals.cloud/conversion/conversion_v2.js"
-        document.getElementsByTagName('head')[0].appendChild(script);
-      </script>
-    <!-- End of Conversion Tracking Code -->
+    <h1>Hello There!!</h1>
+    <div>Please choose one of these URLs:</div>
+    <ul>
+      <li><a href="qa-langai-conversion.html">QA-Langai Conversion Test Page</a></li>
+      <li><a href="staging-conversion.html">Staging Conversion Test Page</a></li>
+    </ul>
   </body>
 </html>
