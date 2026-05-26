@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Conversion Test Page</title>
+  </head>
+  <body>
+    <h1>[QA-Jo] Conversion Hash Test Page</h1>
+
+    <div id="hash-section-1" class="hash-section" hidden>
+      <h2>Section 1</h2>
+      <p>This content is shown when the URL hash is <code>#1</code>.</p>
+    </div>
+    <div id="hash-section-2" class="hash-section" hidden>
+      <h2>Section 2</h2>
+      <p>This content is shown when the URL hash is <code>#2</code>.</p>
+    </div>
+    <div id="hash-section-3" class="hash-section" hidden>
+      <h2>Section 3</h2>
+      <p>This content is shown when the URL hash is <code>#3</code>.</p>
+    </div>
+    <div id="hash-section-default">
+      <p>Append <code>#1</code>, <code>#2</code>, or <code>#3</code> to the URL to view a section.</p>
+    </div>
+
+    <nav>
+      <a href="#1">Go to #1</a> |
+      <a href="#2">Go to #2</a> |
+      <a href="#3">Go to #3</a>
+    </nav>
+
+    <script>
+      (function () {
+        var supported = ['1', '2', '3'];
+        function render() {
+          var current = (location.hash || '').replace('#', '');
+          var sections = document.querySelectorAll('.hash-section');
+          for (var i = 0; i < sections.length; i++) {
+            sections[i].hidden = true;
+          }
+          var def = document.getElementById('hash-section-default');
+          if (supported.indexOf(current) !== -1) {
+            var target = document.getElementById('hash-section-' + current);
+            if (target) target.hidden = false;
+            if (def) def.hidden = true;
+          } else {
+            if (def) def.hidden = false;
+          }
+        }
+        window.addEventListener('hashchange', render);
+        render();
+      })();
+    </script>
+
+    <!-- Conversion Tracking Code -->
+      <script>
+        var script = document.createElement('script');
+        script.defer = true;
+        script.src = "https://static.jp.jo-team.qa.zeals.cloud/conversion/conversion_v2.js"
+        document.getElementsByTagName('head')[0].appendChild(script);
+      </script>
+    <!-- End of Conversion Tracking Code -->
+  </body>
+</html>
